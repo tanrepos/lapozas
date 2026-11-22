@@ -1,0 +1,34 @@
+<h2>Dolgozók</h2>
+
+<button class="btn btn-primary mb-2 me-2" 
+(click)="previousPage()" 
+[disabled]="currentPage() <= 1">
+    Előző
+</button>
+
+<button class="btn btn-primary mb-2 me-2" 
+(click)="nextPage()" 
+[disabled]="currentPage() >= getTotalPages()">
+    Következő
+</button>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Név</th>
+            <th>Település</th>
+            <th>Fizetés</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(emp of pagedEmployees(); track emp.id) {
+            <tr>
+                <td>{{ emp.id }}</td>
+                <td>{{ emp.name }}</td>
+                <td>{{ emp.city }}</td>
+                <td>{{ emp.salary }}</td>
+            </tr>
+        }
+    </tbody>
+</table>
